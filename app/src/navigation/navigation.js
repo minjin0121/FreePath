@@ -12,6 +12,7 @@ const Tab = createBottomTabNavigator();
 const MainNavigation = ({
   setPopMenu,
   setPopLogin,
+  setIsLoggedIn,
   isLoggedIn,
   setPopCardAdd,
 }) => (
@@ -52,7 +53,11 @@ const MainNavigation = ({
       <Tab.Screen
         name="프로필"
         children={() => (
-          <Profile setPopLogin={setPopLogin} isLoggedIn={isLoggedIn} />
+          <Profile
+            setPopLogin={setPopLogin}
+            setIsLoggedIn={setIsLoggedIn}
+            isLoggedIn={isLoggedIn}
+          />
         )}
       />
     </Tab.Navigator>

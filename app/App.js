@@ -41,6 +41,7 @@ const App = () => {
           setPopMenu={setPopMenu}
           setPopCardAdd={setPopCardAdd}
           setPopLogin={setPopLogin}
+          setIsLoggedIn={setIsLoggedIn}
           isLoggedIn={isLoggedIn}
         />
       </SafeAreaProvider>

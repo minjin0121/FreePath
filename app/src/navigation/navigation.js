@@ -9,13 +9,19 @@ import Profile from "../screens/Profile";
 // const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const MainNavigation = ({ setPopMenu, setPopCardAdd }) => (
+const MainNavigation = ({
+  setPopMenu,
+  setPopLogin,
+  isLoggedIn,
+  setPopCardAdd,
+}) => (
   <NavigationContainer>
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({
           // focused,
-          color, size,
+          color,
+          size,
         }) => {
           let iconName;
 
@@ -39,9 +45,16 @@ const MainNavigation = ({ setPopMenu, setPopCardAdd }) => (
     >
       <Tab.Screen
         name="대시보드"
-        children={() => <Home setPopMenu={setPopMenu} setPopCardAdd={setPopCardAdd} />}
+        children={() => (
+          <Home setPopMenu={setPopMenu} setPopCardAdd={setPopCardAdd} />
+        )}
       />
-      <Tab.Screen name="프로필" component={Profile} />
+      <Tab.Screen
+        name="프로필"
+        children={() => (
+          <Profile setPopLogin={setPopLogin} isLoggedIn={isLoggedIn} />
+        )}
+      />
     </Tab.Navigator>
   </NavigationContainer>
 );

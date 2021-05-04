@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import CardExpand from "./Card/CardExpand";
+
+const CardContainer = styled.View`
+  display: flex;
+  flex-direction: column-reverse;
+`;
 
 const CardView = styled.View`
   margin-top: 15px;
@@ -8,7 +14,7 @@ const CardView = styled.View`
   width: 100%;
   height: 100px;
   border-radius: 10px;
-  background-color: #f9f1f7;
+  background-color: ${(props) => props.theme.card.bg};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -26,7 +32,7 @@ const CardOnOffBox = styled.View`
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  background-color: #dd5254;
+  background-color: ${(props) => props.theme.card.circle.bg};
   margin-right: 10px;
   display: flex;
   justify-content: center;
@@ -34,41 +40,43 @@ const CardOnOffBox = styled.View`
 `;
 
 const CardOnOffText = styled.Text`
-  color: #ffffff;
+  color: ${(props) => props.theme.card.circle.text};
   font-size: 14px;
-  font-weight: bold;
+  line-height: 16px;
+  font-family: "5";
 `;
 
 const CardInfoBox = styled.View`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 `;
 
 const CardTitleText = styled.Text`
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  font-family: "5";
+  color: ${(props) => props.theme.card.title};
 `;
 
 const CardAddressText = styled.Text`
-  margin-top: 3px;
+  margin-top: 4px;
   margin-bottom: 6px;
   margin-left: 1px;
+  color: ${(props) => props.theme.card.addr};
   font-size: 12px;
-  font-weight: bold;
-  color: #7d797c;
-`;
-
-const CardTimeTagBox = styled.View`
-  background-color: #e7e8b7;
-  padding: 2px 8px;
-  border-radius: 10px;
-  align-self: flex-start;
+  line-height: 14px;
+  font-family: "4";
 `;
 
 const CardTimeTagText = styled.Text`
-  color: #958164;
-  font-weight: bold;
+  align-self: flex-start;
+  color: ${(props) => props.theme.card.time.text};
+  background-color: ${(props) => props.theme.card.time.bg};
+  border-radius: 10px;
   font-size: 12px;
+  line-height: 14px;
+  font-family: "4";
+  padding: 4px 8px 2px 8px;
 `;
 
 const CardRightBox = styled.View`
@@ -78,35 +86,43 @@ const CardRightBox = styled.View`
   height: 100%;
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
+  padding-right: 10px;
 `;
 
 const TimeLeftText = styled.Text`
-  color: #7d797c;
-  font-weight: bold;
-  font-size: 15px;
-  margin-top: 10px;
+  color: ${(props) => props.theme.card.timer};
+  font-size: 12px;
+  line-height: 14px;
+  font-family: "5";
+  margin-top: 12px;
 `;
 
 const Card = ({ title, address, time }) => {
+  const [expandShow, setExpandShow] = useState(false);
+
   return (
-    <CardView>
-      <CardLeftBox>
-        <CardOnOffBox>
-          <Icon name={"map"} size={20} color={"#FFFFFF"}></Icon>
-          <CardOnOffText>ON</CardOnOffText>
-        </CardOnOffBox>
-        <CardInfoBox>
-          <CardTitleText>{title}</CardTitleText>
-          <CardAddressText>{address}</CardAddressText>
-          <CardTimeTagBox>
+    <CardContainer>
+      {expandShow && (
+        <CardExpand />)}
+      <CardView>
+        <CardLeftBox>
+          <CardOnOffBox>
+            <Icon name="map" size={20} color="#FFFFFF" />
+            <CardOnOffText>ON</CardOnOffText>
+          </CardOnOffBox>
+          <CardInfoBox>
+            <CardTitleText>{title}</CardTitleText>
+            <CardAddressText>{address}</CardAddressText>
             <CardTimeTagText>{time}</CardTimeTagText>
-          </CardTimeTagBox>
-        </CardInfoBox>
-      </CardLeftBox>
-      <CardRightBox>
-        <TimeLeftText>1시간 15분 후</TimeLeftText>
-      </CardRightBox>
-    </CardView>
+          </CardInfoBox>
+        </CardLeftBox>
+        <CardRightBox>
+          <TimeLeftText>1시간 15분 후</TimeLeftText>
+          <Icon name={expandShow ? "keyboard-arrow-up" : "keyboard-arrow-down"} size={30} color="rgba(0, 0, 0, 0.5)" onPress={() => { setExpandShow(!expandShow); }} />
+        </CardRightBox>
+      </CardView>
+    </CardContainer>
   );
 };
 

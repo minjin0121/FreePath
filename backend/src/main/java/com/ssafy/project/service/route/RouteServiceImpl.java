@@ -50,33 +50,6 @@ public class RouteServiceImpl implements RouteService {
 	}
 
 	@Override
-	public String readApi() {
-		
-//		System.out.println(apiProperties.getKey());
-
-		StringBuffer sb = new StringBuffer();
-		final String openUrl = "https://api.odsay.com/v1/api/searchBusLane?busNo=10&CID=1000&apiKey=" + apiProperties.getKey();
-
-		try {
-			URL url = new URL(openUrl);
-
-			HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
-			urlConnection.setRequestMethod("GET");
-
-			BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), "UTF-8"));
-
-			sb.append(br.readLine());
-
-			urlConnection.disconnect();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return sb.toString();
-	}
-
-	@Override
 	public Object findLast(RouteFindRequest routeFindRequest) {
 		
 		final String openUrl = "https://api.odsay.com/v1/api/searchPubTransPathT?lang=0&SX="

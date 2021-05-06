@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/MaterialIcons";
+import kakaologo from "../../assets/logos/kakao.png";
+import naverlogo from "../../assets/logos/naver.png";
+import googlelogo from "../../assets/logos/google.png";
 
 const LoginContainer = styled.View`
   position: absolute;
@@ -47,26 +50,49 @@ const SocialLoginTouch = styled.TouchableOpacity`
   align-items: center;
   width: 100%;
   height: 50px;
-  background-color: yellow;
+  background-color: ${(props) => props.bgColor};
   border-radius: 10px;
   padding: 0px 30px;
-  margin: 8px 0px;
-  elevation: 5;
+  margin: 10px 0px;
+  elevation: 10;
 `;
 
 const SocialLoginButtonText = styled.Text`
   width: 100%;
   text-align: center;
   font-size: 18px;
+  line-height: 21px;
+  font-family: "5";
+  color: ${(props) => props.textColor};
+`;
+
+const SocialLoginButtonIcon = styled.Image`
+  width: 28px;
+  height: 28px;
+`;
+
+const EmailLoginTouch = styled.TouchableOpacity`
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  border-radius: 10px;
+  padding: 0px 30px;
+  margin: 10px 0px;
+  border: 1px;
+  border-color: white;
+`;
+
+const EmailLoginButtonText = styled.Text`
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
   line-height: 20px;
   font-family: "5";
   color: white;
-`;
-
-const SocialLoginButtonIcon = styled.View`
-  min-width: 25px;
-  min-height: 25px;
-  background-color: black;
 `;
 
 const LoginBottomText = styled.Text`
@@ -95,24 +121,29 @@ const Login = ({ setPopLogin }) => {
         <SloganText>슬로건 프리패스 슬로건</SloganText>
       </LoginTopBox>
       <LoginButtonBox>
-        <SocialLoginTouch>
-          <SocialLoginButtonIcon />
-          <SocialLoginButtonText>카카오톡으로 로그인</SocialLoginButtonText>
+        <SocialLoginTouch bgColor="#FFDC02">
+          <SocialLoginButtonIcon source={kakaologo} resizeMode="contain" />
+          <SocialLoginButtonText textColor="#000000">
+            카카오톡으로 로그인
+          </SocialLoginButtonText>
         </SocialLoginTouch>
-        <SocialLoginTouch>
-          <SocialLoginButtonIcon />
-          <SocialLoginButtonText>네이버로 로그인</SocialLoginButtonText>
+        <SocialLoginTouch bgColor="#1EC800">
+          <SocialLoginButtonIcon source={naverlogo} resizeMode="contain" />
+          <SocialLoginButtonText textColor="#FFFFFF">
+            네이버로 로그인
+          </SocialLoginButtonText>
         </SocialLoginTouch>
-        <SocialLoginTouch>
-          <SocialLoginButtonIcon />
-          <SocialLoginButtonText>Google로 로그인</SocialLoginButtonText>
+        <SocialLoginTouch bgColor="#EA6565">
+          <SocialLoginButtonIcon source={googlelogo} resizeMode="contain" />
+          <SocialLoginButtonText textColor="#FFFFFF">
+            Google로 로그인
+          </SocialLoginButtonText>
         </SocialLoginTouch>
-        <SocialLoginTouch>
-          <SocialLoginButtonIcon />
-          <SocialLoginButtonText>이메일 로그인/회원가입</SocialLoginButtonText>
-        </SocialLoginTouch>
+        <EmailLoginTouch>
+          <EmailLoginButtonText>이메일 로그인/회원가입</EmailLoginButtonText>
+        </EmailLoginTouch>
       </LoginButtonBox>
-      <LoginBottomText>로그인 문의 : admin@freepass.com</LoginBottomText>
+      <LoginBottomText>로그인 오류 문의 admin@freepass.com</LoginBottomText>
     </LoginContainer>
   );
 };

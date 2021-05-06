@@ -50,6 +50,8 @@ const DefaultTheme = {
   },
   login: {
     bg: colors.havelockblue,
+    naver: colors.navergreen,
+    kakao: colors.kakaoyellow,
   },
 };
 

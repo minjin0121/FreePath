@@ -162,8 +162,8 @@ public class RouteServiceImpl implements RouteService {
 
 			long remainSecond = (lastDate.getTimeInMillis() - today.getTimeInMillis()) / 1000;
 
-			resultMap.put("startTime", sb.toString());
-			resultMap.put("startOne", resultObject);
+			resultMap.put("arrivetime", sb.toString());
+			resultMap.put("routeinfo", resultObject);
 			resultMap.put("remainSecond", remainSecond);
 
 			urlConnection.disconnect();

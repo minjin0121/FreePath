@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class RouteFindRequest {
 	
+	private String uid;
 	//출발지 x,y
 	private float startX;
 	private float startY;

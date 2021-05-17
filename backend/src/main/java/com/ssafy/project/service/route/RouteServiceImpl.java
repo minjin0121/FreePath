@@ -164,7 +164,7 @@ public class RouteServiceImpl implements RouteService {
 
 			resultMap.put("arrivetime", sb.toString());
 			resultMap.put("routeinfo", resultObject);
-			resultMap.put("remainSecond", remainSecond);
+			resultMap.put("totaltime", remainSecond);
 
 			urlConnection.disconnect();
 			status = HttpStatus.OK;

@@ -156,7 +156,7 @@ const Test = () => {
             title="axios post 테스트"
             onPress={async () => {
               const req = {
-                arriveTime: "2",
+                arriveTime: "2021-05-17 23:50",
                 endX: 126.94985844835392,
                 endY: 37.45684204004226,
                 startX: 126.97781016786638,
